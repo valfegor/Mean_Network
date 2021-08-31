@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
             localStorage.setItem('token',res.jwtToken);
             this.message = 'successfully Register The user';
             this.openSnackBarSuccesfull();
-            this._router.navigate(['/registerUser']);
+            this._router.navigate(['/registerPost']);
             this.registerData={};
           },
           (err)=>{

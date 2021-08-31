@@ -32,6 +32,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { UserService } from "../../src/app/services/user.service";
 import { AuthGuard } from "../../src/app/guard/auth.guard";
 import { TokenInterceptorService } from "../../src/app/services/token-interceptor.service";
+import { RegisterPostComponent } from './post/register-post/register-post.component';
 
 //imports de 
 
@@ -43,7 +44,8 @@ import { TokenInterceptorService } from "../../src/app/services/token-intercepto
     FooterComponent,
     RegisterComponent,
     PostComponent,
-    ListPostComponent
+    ListPostComponent,
+    RegisterPostComponent
   ],
   imports: [
     BrowserModule,

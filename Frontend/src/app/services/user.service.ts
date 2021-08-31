@@ -25,8 +25,12 @@ export class UserService {
      return !!localStorage.getItem('token');
    }
 
+   getToken(){
+     return localStorage.getItem('token');
+   }
+
    logout(){
     localStorage.removeItem('token');
-    this._router.navigate([''])
+    this._router.navigate(['login'])
    }
 }
