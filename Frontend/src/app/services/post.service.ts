@@ -19,4 +19,8 @@ export class PostService {
    listPost(){
      return this._http.get<any>(this.env+'post/listPost')
    }
+
+   updatePost(post:any){
+     return this._http.put<any>(this.env+'post/updatePost',post);
+   }
 }

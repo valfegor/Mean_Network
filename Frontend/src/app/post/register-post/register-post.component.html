@@ -6,15 +6,15 @@
                 <div class="container">
                     <mat-form-field>
                         <input 
-                        [(ngModel)]="registerData.text"
+                        [(ngModel)]="registerData.title"
                         matInput
-                        placeholder="Task Name"
+                        placeholder="Title Of Post"
                         required
                         />
                     </mat-form-field>
                     <mat-form-field>
                         <input 
-                        [(ngModel)]="registerData.estade"
+                        [(ngModel)]="registerData.text"
                         matInput
                         placeholder="Description"
                         required
@@ -23,6 +23,7 @@
                 </div>
             </mat-card-content>
             <mat-card-actions>
+                
                 <button (click)="registerPost()"
                 class="button colorButton"
                 mat-raised-button

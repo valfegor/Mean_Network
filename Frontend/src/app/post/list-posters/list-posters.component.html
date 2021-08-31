@@ -1,0 +1,85 @@
+<div class="bgComponent">
+  <div class="accordion_display">
+    <div class="accordion_size">
+      <mat-accordion multi="true" *ngIf="postData.length">
+        <mat-expansion-panel *ngFor="let post of postData">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span>User Author:{{ post.author }}</span>
+              <span class='title'>Post Title: {{ post.title }}</span>
+              <span class="spacer"></span>
+              
+              <button
+                class="btnDone"
+                *ngIf="post.estade == 'happy'"
+                mat-raised-button
+              >
+                {{ post.estade }}
+              </button>
+              <button
+              class="btnInProgress"
+              
+              *ngIf="post.estade == 'Aburrido'"
+              mat-raised-button
+            >
+              {{ post.estade }}
+            </button>
+            <button
+                  class="btnToDo"
+                  *ngIf="post.estade == 'Comiendo'"
+                  mat-raised-button
+                >
+                  {{ post.estade }}
+                </button>
+                <button
+                  class="btnToDo"
+                  *ngIf="post.estade == 'Jugando'"
+                  mat-raised-button
+                >
+                  {{ post.estade }}
+                </button>
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            {{ post.text }}
+          </mat-panel-description>
+          <mat-action-row>
+            <button
+              class="btnSelectTodo"
+              mat-button
+              (click)="updatePost(post , 'Comiendo')"
+            >
+              Comiendo
+            </button>
+            <button
+              class="btnSelectInProgress"
+              mat-button
+              (click)="updatePost(post , 'Aburrido')"
+            >
+              Aburrido
+            </button>
+            <button
+              class="btnSelectDone"
+              mat-button
+              (click)="updatePost(post , 'happy')"
+            >
+              Happy
+            </button>
+            <button
+              class="btnSelectPlaying"
+              mat-button
+              (click)="updatePost(post , 'Jugando')"
+            >
+              Jugando
+            </button>
+            <span class="spacer"></span>
+            <mat-icon color="primary" 
+              >delete</mat-icon
+            >
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

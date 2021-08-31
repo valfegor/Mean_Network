@@ -16,15 +16,21 @@ import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 
 //import angular material.
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatIconModule } from "@angular/material/icon";
-import { MatDatepickerModule} from "@angular/material/datepicker";
-import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card'; 
+import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+//acordeon
+import {MatExpansionModule} from '@angular/material/expansion'; 
+
+//iconos
+import {MatIconModule} from '@angular/material/icon'; 
+
+//iconos
+
 
 
 //servicios.
@@ -33,6 +39,7 @@ import { UserService } from "../../src/app/services/user.service";
 import { AuthGuard } from "../../src/app/guard/auth.guard";
 import { TokenInterceptorService } from "../../src/app/services/token-interceptor.service";
 import { RegisterPostComponent } from './post/register-post/register-post.component';
+import { ListPostersComponent } from './post/list-posters/list-posters.component';
 
 //imports de 
 
@@ -45,24 +52,24 @@ import { RegisterPostComponent } from './post/register-post/register-post.compon
     RegisterComponent,
     PostComponent,
     ListPostComponent,
-    RegisterPostComponent
+    RegisterPostComponent,
+    ListPostersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule, 
-    MatToolbarModule, 
-    MatButtonModule,
-    MatFormFieldModule, 
-    MatCardModule,
-    MatIconModule, 
-    MatInputModule,   
-    MatSnackBarModule,
-    MatDatepickerModule,
-    MatGridListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [
     UserService,

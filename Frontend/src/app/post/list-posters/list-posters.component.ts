@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from "../../services/post.service";
-import { Router } from "@angular/router";
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -8,48 +7,54 @@ import {
 } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-register-post',
-  templateUrl: './register-post.component.html',
-  styleUrls: ['./register-post.component.css']
+  selector: 'app-list-posters',
+  templateUrl: './list-posters.component.html',
+  styleUrls: ['./list-posters.component.css']
 })
-export class RegisterPostComponent implements OnInit {
-  public registerData: any;
+export class ListPostersComponent implements OnInit {
+  public postData: any;
   public message: string;
   public horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   public VerticalPosition: MatSnackBarVerticalPosition = 'top';
   public duratioInseconds: number;
-  constructor(private _postService:PostService,private _router:Router  , private _snackbar:MatSnackBar ) {
-    this.message = '';
+  
+  constructor(private _postService:PostService , private _snackbar:MatSnackBar) {
+    this.postData = {}
+    this.message = ""
     this.duratioInseconds=2;
-    this.registerData={};
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    this._postService.listPost().subscribe(
+      (res)=>{
+        
+        this.postData=res.post;
+        console.log(this.postData);
+      },
+      (err)=> {
+        this.message = err.error;
+        this.openSnackBarError();
+      }
+    )
   }
 
-  registerPost(){
-    if(!this.registerData.text || !this.registerData.title){
-      this.message = 'Sorry Check all the camps',
-      this.openSnackBarError;
-      this.registerData={};
-    }
-    else{
-      this._postService.registerPost(this.registerData).subscribe(
+  updatePost(post: any,estade:string) {
+    console.log(post)
+      let tempStatus = post.estade;
+      post.estade = estade;
+
+      this._postService.updatePost(post).subscribe(
         (res)=>{
-          this._router.navigate(['/listPoster']);
-          this.message='Success Register the post';
-          this.openSnackBarError();
-          this.registerData={};
-        }, 
-        (err)=>{
+          post.estade = estade;
+        },
+        (err)=> {
+          post.estade = tempStatus;
           this.message = err.error;
           this.openSnackBarError();
         }
+
       )
-    }
   }
-
-
 
   openSnackBarSuccesfull() {
     //this.messague = por que ha estado cambiando , {} = CONFIGURACIONES DE LA BARRA , propiedad de la duracion 

@@ -42,6 +42,10 @@
   .btnSelectInProgress {
     color: #f58231;
   }
+
+  .btnSelectPlaying {
+    color: #6c31f5;
+  }
    
   .btnSelectTodo {
     color: #e6194b;
@@ -61,4 +65,8 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 450px;
+  }
+
+  .title{
+      padding-left: 30px;
   }

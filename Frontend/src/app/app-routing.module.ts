@@ -5,6 +5,7 @@ import { RegisterComponent } from './home/register/register.component';
 import {AuthGuard  } from "../app/guard/auth.guard";
 import { RegisterPostComponent } from "../app/post/register-post/register-post.component";
 import { ListPostComponent } from "../app/post/list-post/list-post.component";
+import { ListPostersComponent } from "../app/post/list-posters/list-posters.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,11 @@ const routes: Routes = [
     path:'listPost',
     component:ListPostComponent ,
     pathMatch:'full',
+    canActivate:[AuthGuard]
+  },
+  {
+    path:'listPoster',
+    component:ListPostersComponent,
     canActivate:[AuthGuard]
   }
 ];

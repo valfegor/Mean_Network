@@ -8,4 +8,5 @@ const Valid = require('../middleware/validate');
 router.post('/registerPost',Auth,Valid,postController.registerPost);
 
 router.get('/listPost',Auth,Valid,postController.listPost);
+router.put('/updatePost',Auth,Valid,postController.updatePost);
 module.exports = router;
