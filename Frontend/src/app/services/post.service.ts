@@ -15,4 +15,8 @@ export class PostService {
    registerPost(post:any){
     return this._http.post<any>(this.env+'post/registerPost',post);
    }
+
+   listPost(){
+     return this._http.get<any>(this.env+'post/listPost')
+   }
 }
