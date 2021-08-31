@@ -34,9 +34,23 @@ export class RegisterComponent implements OnInit {
       if(!this.registerData.name || !this.registerData.email || !this.registerData.password){
         this.message = 'Sorry check all the camps please';
         this.openSnackBarError();
+        this.registerData={};
       }
       else{
-        
+        this._userService.registerUser(this.registerData).subscribe(
+          (res)=>{
+            localStorage.setItem('token',res.jwtToken);
+            this.message = 'successfully Register The user';
+            this.openSnackBarSuccesfull();
+            this._router.navigate(['/registerUser']);
+            this.registerData={};
+          },
+          (err)=>{
+            this.message=err.error;
+            this.openSnackBarError();
+          }
+
+        )
       }
   }
 

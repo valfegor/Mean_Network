@@ -13,6 +13,6 @@ export class UserService {
    }
 
    registerUser(user:any){
-     this._http.post<any>(this.env+'user/registerUser',user);
+     return this._http.post<any>(this.env+'user/registerUser',user);
    }
 }
