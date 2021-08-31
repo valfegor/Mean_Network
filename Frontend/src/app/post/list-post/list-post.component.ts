@@ -5,7 +5,6 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import { log } from 'console';
 
 @Component({
   selector: 'app-list-post',
