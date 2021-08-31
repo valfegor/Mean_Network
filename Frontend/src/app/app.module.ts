@@ -26,6 +26,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDatepickerModule} from "@angular/material/datepicker";
 import {MatGridListModule} from '@angular/material/grid-list'; 
 
+
+//servicios.
+
+import { UserService } from "../../src/app/services/user.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +58,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
