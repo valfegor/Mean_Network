@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const Role = require('../models/user');
+const Role = require('../models/role');
 const bcrypt = require('bcrypt')
 
 const registerUser = async (req,res)=>{
@@ -9,11 +9,13 @@ const registerUser = async (req,res)=>{
 
     if(existingEmail) return res.status(400).send("Sorry the email dont exists");
 
-    const hash = bcrypt.hash(req.body.password,10);
+    const hash = await bcrypt.hash(req.body.password,10);
 
-    const existRole = await Role.find({name:'user'});
+    
+    let role = await Role.findOne({name:"user"});
+    console.log(role);
 
-    if(!existRole) return res.status(400).send("Sorry the role dont exist");
+    if(!role) return res.status(400).send("Sorry the role dont exist");
 
     const user = new User({
         name: req.body.name,
