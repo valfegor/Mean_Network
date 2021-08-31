@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { UserService } from "../../services/user.service";
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-register',
@@ -6,10 +14,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  public registerData: any;
+  public message: string;
+  public horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  public VerticalPosition: MatSnackBarVerticalPosition = 'top';
+  public durationInseconds:number;
 
-  constructor() { }
+  constructor(private _router:Router , private _userService:UserService , private _snackbar:MatSnackBar) {
+    this.message = "";
+    this.durationInseconds = 2;
+    this.registerData = {}
 
+   }
+  
   ngOnInit(): void {
   }
 
+  registerUser(){
+      if(!this.registerData.name || !this.registerData.email || !this.registerData.password){
+        this.message = 'Sorry check all the camps please';
+        this.openSnackBarError();
+      }
+      else{
+        
+      }
+  }
+
+  openSnackBarSuccesfull() {
+    //this.messague = por que ha estado cambiando , {} = CONFIGURACIONES DE LA BARRA , propiedad de la duracion 
+    this._snackbar.open(this.message,'X',{
+      horizontalPosition:this.horizontalPosition,
+      verticalPosition:this.VerticalPosition,
+      duration:this.durationInseconds*1000,
+      panelClass:['style-snackBarTrue']
+    });
+  }
+  
+  openSnackBarError() {
+    this._snackbar.open(this.message,'X',{
+      horizontalPosition:this.horizontalPosition,
+      verticalPosition:this.VerticalPosition,
+      duration:this.durationInseconds*1000,
+      panelClass:['style-snackBarFalse']
+    });
+  }
 }
