@@ -2,20 +2,22 @@ const jwt = require('jsonwebtoken');
 
 const Auth = async(req,res,next)=>{
     let jwtToken = req.header("Authorization");
-    if(!jwtToken) return res.status(400).send("Sorry the token its invalid");
+    
+    //si el token es diferente o no tiene termina la ejecucion
+    if(!jwtToken) return res.status(400).send("No token please login");
 
-    jwtToken = jwtToken.split[' '][1];
+    jwtToken = jwtToken.split(" ")[1];
 
-    if(!jwtToken) return res.status(400).send("Invalid Token");
+    if(!jwtToken) return res.status('Invalid Token Please Checkout');
 
     try {
-        //recordar que en el middleware validamos
         const payload = await jwt.verify(jwtToken,process.env.SECRET_KEY_JWT);
-        req.user=payload;
+        req.user = payload;
         next();
-    } catch (error) {
-        return res.status(400).send("Sorry Invalid Token");
+    } catch (e) {
+        return res.status(400).send("Sorry Please try again");
     }
+    
 }
 
 module.exports = Auth;

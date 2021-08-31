@@ -5,12 +5,14 @@ require("dotenv").config();
 
 const Role = require("./routes/role");
 const User = require("./routes/user");
+const Post = require("./routes/post");
 app=express();
 
 app.use(express.json());
 app.use(cors());
 app.use('/api/role',Role);
-app.use('/api/user',User)
+app.use('/api/user',User);
+app.use('/api/post',Post);
 const{Database_connect} = require('../Backend/bd/bd');
 
 
