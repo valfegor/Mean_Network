@@ -42,17 +42,18 @@ const login = async (req, res) => {
     return res.status(400).send("Sorry check all the camps please");
 
   let user = await User.findOne({ email: req.body.email });
+  console.log(user)
   if (!user)
-    return res.status(400).send("Sorry the password or email incorrect");
+    return res.status(400).send("Sorry the password");
 
-  let hash = await bcrypt.compare(user.password, req.body.password);
+  let hash = await bcrypt.compare(req.body.password,user.password);
 
   if (!hash)
     return res.status(400).send("Sorry the password or email incorrect");
 
     try {
         const jwtToken = user.generateJWT();
-        return res.status({jwtToken});
+        return res.status(200).send({jwtToken});
     } catch (e) {
         return res.status(400).send("Cant login");
     }
