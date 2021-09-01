@@ -24,9 +24,9 @@ const registerPost = async (req, res) => {
 
 const listPost=async (req, res) => {
     
-    const post = await Post.find({user:req.user._id})
+    const post = await Post.find({user_id:req.user._id})
 
-    if(!post) return res.status(400).send("Sorry no post");
+    if(!post || post == 0) return res.status(400).send("Sorry no post");
 
     return res.status(200).send({post});
 }

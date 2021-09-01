@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       this._userService.login(this.registerData).subscribe(
         (res)=>{
           localStorage.setItem('token',res.jwtToken);
-          this._router.navigate(['/registerUser']);
+          this._router.navigate(['/listPoster']);
           this.registerData={};
         },
         (err)=>{
