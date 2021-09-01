@@ -35,6 +35,7 @@ const routes: Routes = [
   {
     path:'listPoster',
     component:ListPostersComponent,
+    pathMatch:'full',
     canActivate:[AuthGuard]
   }
 ];
