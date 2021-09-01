@@ -66,11 +66,11 @@ export class ListPostersComponent implements OnInit {
         let index = this.postData.indexOf(post);
         if(index > -1){
           this.postData.splice(index,1);
-          this.message = "Task Eliminated Succesfully"
+          this.message = "Post Eliminated Succesfully"
           this.openSnackBarSuccesfull()
         }
         else{
-          this.message='Cant eliminate task please try again';
+          this.message='Cant eliminate Post please try again';
           this.openSnackBarError();
         }
       }
