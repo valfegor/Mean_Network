@@ -9,4 +9,5 @@ router.post('/registerPost',Auth,Valid,postController.registerPost);
 
 router.get('/listPost',Auth,Valid,postController.listPost);
 router.put('/updatePost',Auth,Valid,postController.updatePost);
+router.delete('/deletePost/:_id',Auth,Valid,postController.deletePost);
 module.exports = router;

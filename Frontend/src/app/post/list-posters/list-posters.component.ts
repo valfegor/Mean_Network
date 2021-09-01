@@ -56,6 +56,25 @@ export class ListPostersComponent implements OnInit {
       )
   }
 
+  deletePost(post: any){
+    console.log(post._id)
+    this._postService.deletePost(post).subscribe(
+      (res)=>{
+        
+        let index = this.postData.indexOf(post);
+        if(index > -1){
+          this.postData.splice(index,1);
+          this.message = "Task Eliminated Succesfully"
+          this.openSnackBarSuccesfull()
+        }
+        else{
+          this.message='Cant eliminate task please try again';
+          this.openSnackBarError();
+        }
+      }
+    )
+  }
+
   openSnackBarSuccesfull() {
     //this.messague = por que ha estado cambiando , {} = CONFIGURACIONES DE LA BARRA , propiedad de la duracion 
     this._snackbar.open(this.message,'X',{

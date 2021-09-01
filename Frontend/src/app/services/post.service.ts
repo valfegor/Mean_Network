@@ -23,4 +23,8 @@ export class PostService {
    updatePost(post:any){
      return this._http.put<any>(this.env+'post/updatePost',post);
    }
+   
+   deletePost(poster:any){
+     return this._http.delete<any>(this.env+'post/deletePost/'+ poster._id);
+   }
 }
