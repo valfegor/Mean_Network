@@ -45,6 +45,8 @@ export class ListPostersComponent implements OnInit {
 
       this._postService.updatePost(post).subscribe(
         (res)=>{
+          this.message = `succesfull change the estade of ${post.text} to ${post.estade}`;
+          this.openSnackBarSuccesfull();
           post.estade = estade;
         },
         (err)=> {
