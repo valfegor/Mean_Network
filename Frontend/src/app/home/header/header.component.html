@@ -3,7 +3,6 @@
 
     <div class="spacer"></div>
 
-    <a mat-raised-button routerLink="" color='accent'>Home</a>
     <a mat-button routerLink="registerUser" *ngIf='!_userService.loggedIn()'>Register User</a>
     <a mat-button routerLink="listPoster"*ngIf='_userService.loggedIn()'>List Post</a>
     <a mat-button routerLink="registerPost"*ngIf='_userService.loggedIn()'>Register Post</a>
